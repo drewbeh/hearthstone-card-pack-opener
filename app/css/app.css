@@ -1,0 +1,220 @@
+/*******************************
+            GLOBALS
+*******************************/
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+/*******************************
+            CARDBACK
+*******************************/
+.cardback-choice-title {
+    width: 80%;
+    border: 2px solid #ADC9DC;
+    border-bottom: none;
+    text-align: left;
+    padding: 2px 25px;
+    font-size: 18px;
+}
+
+.cardback-choice-container {
+    width: 80%;
+    height: 100%;
+    border: 2px solid #ADC9DC;
+    border-top: none;
+    text-align: center;
+    padding: 10px 25px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.cardback-choice-container p {
+    margin: 0;
+}
+
+.cardback {
+    width: 75px;
+    height: 100px;
+    display: inline-block;
+    padding: 15px;
+}
+
+.cardback img {
+    width: 35px;
+}
+
+.cardback .cardback-name {
+    font-size: 12px;
+    white-space: pre-wrap;
+}
+
+/*******************************
+          OPENED CARDS
+*******************************/
+
+.card-display-container {
+    white-space: nowrap;
+    text-align: center;
+    display: flex;
+}
+
+.card-display-container .card {
+    width: 307px;
+    height: 465px;
+    bottom: 0;
+    float: left;
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.card-display-container .card-back {
+    width: 307px;
+    height: 465px;
+/ / background : url("http://wow.zamimg.com/images/hearthstone/backs/original/Card_Back_Pandaria.png");
+    position: relative;
+    cursor: pointer;
+}
+
+.flip {
+    -webkit-perspective: 800px;
+    width: 307px;
+    height: 465px;
+    position: relative;
+}
+
+.flip .card.flipped {
+    -webkit-transform: rotateY(-180deg);
+}
+
+.flip .card {
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.75s;
+}
+
+.flip .card .face {
+    width: 307px;
+    height: 465px;
+    -webkit-backface-visibility: hidden;
+    z-index: 2;
+}
+
+.flip .card .back {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    background: url("http://wow.zamimg.com/images/hearthstone/backs/original/Card_Back_Pandaria.png");
+    outline: none;
+    border: 0;
+}
+
+.flip .card .front {
+    -webkit-transform: rotateY(180deg);
+    cursor: pointer;
+}
+
+/*******************************
+          CARDS OWNED
+*******************************/
+.card-owned-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    border: 2px solid #ADC9DC;
+    border-bottom: none;
+    text-align: left;
+    padding: 2px 25px;
+    font-size: 12px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: nowrap;
+}
+
+.card-owned-container .card {
+    width: 75px;
+    height: 15px;
+    border: 2px solid #0F0F0F;
+    text-align: center;
+    bottom: 0;
+    float: left;
+    display: block;
+    position: relative;
+    padding: 25px;
+    margin: 0 5px 0 0;
+}
+
+.card-owned-container .card img {
+    height: 100%;
+}
+
+/*******************************
+         DROPDOWN MENUS
+*******************************/
+
+.header {
+    display: flex;
+}
+
+.btn-group {
+    display: flex;
+}
+
+.dropdown-menu {
+    border: none;
+    padding: 3px 0 0 0 ;
+    margin: 0;
+}
+
+.dropdown-menu > li > a {
+    padding: 0;
+}
+
+.dropdown-menu > li > a:hover {
+    background: #c0c0c0;
+}
+
+.card-back-list {
+    display: inline-block;
+}
+
+.card-back-container {
+    width: 60%;
+}
+
+.card-back-img {
+    border: none;
+    padding: 3px ;
+    margin: 0;
+    width: 125px;
+}
+
+.caption {
+    text-align: center;
+    display: block;
+}
+
+.card-pack {
+    border: none;
+    padding: 3px ;
+    margin: 0;
+    width: 150px;
+}
+
+.btn-append-to-body:hover>.uib-dropdown-menu {
+    display: block;
+}
+
+
+
+
+

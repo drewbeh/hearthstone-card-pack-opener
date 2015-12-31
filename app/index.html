@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<div ng-view></div>
+
+<div class="header">
+    <div ng-controller="DropdownCtrl" class="btn-group" uib-dropdown dropdown-append-to-body>
+        <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+            Card back <span class="caret"></span>
+        </button>
+        <ul class="uib-dropdown-menu card-back-container" role="menu" aria-labelledby="btn-append-to-body">
+            <li class="card-back-list" ng-repeat="cardback in cardbackData">
+                <a href="#"><img class="card-back-img" ng-src="{{ cardback.img }}"/></a>
+                <span class="caption">
+                    {{ cardback.cardBackId }}
+                    {{ cardback.name }}
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-controller="DropdownCtrl" class="btn-group" uib-dropdown dropdown-append-to-body>
+        <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+            Card pack <span class="caret"></span>
+        </button>
+
+        <div ng-controller="ButtonCtrl">
+            <ul class="uib-dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
+                <div class="btn-group card-pack">
+                    <li><img src="img/Card_Pack_Classic.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable /></li>
+                    <li><img src="img/Card_Pack_GVG.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable /></li>
+                    <li><img src="img/Card_Pack_TGT.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Right'" uncheckable /></li>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="CardCtrl" class="card-display-container">
+    <div class="card-back flip"
+         ng-repeat="card in cardData.TheGrandTournament | filter:{collectible:'true'} | filter:{rarity:'Legendary'} | limitTo:5">
+        <!-- | rarity | set | filter:{rarity:'Rare'} -->
+        <div class="card" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped">
+            <div class="face back"></div>
+            <img class="face front" ng-src="{{ card.imgGold }}"/>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" ng-click="shuffleCards()" uncheckable>Shuffle</button>
+<button type="button" class="btn btn-primary flipAllCards" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped">Flip All</button>
+
+
+
+
+<!--
+<div class="card-display-container">
+    <div class="card" ng-repeat="card in cards">
+        <img class="card-info card-img" ng-src="{{ card.img }}" alt="{{ card.id }}" />
+        <p class="card-info card-name">{{ card.name }}</p>
+        <p class="card-info card-id">ID #: {{ card.id }}</p>
+        <p class="card-info card-rarity">{{ card.rarity }}</p>
+    </div>
+</div>
+-->
+
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
+<script src="js/filters.js"></script>
+<script src="partials/view1/view1.js"></script>
+<script src="partials/view2/view2.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
+
+<!--
+Add Sorting to card-owned
+Add pack type (~25% width on top) with pack-back picture
+--Changes all cards possible to open
+Add rarity calculation for randomizer
+Add clear card-owned list
+Card-owned cards 10px height picture
+--Rarity gem/mana cost
+-->
