@@ -43,9 +43,14 @@
         <div ng-controller="ButtonCtrl">
             <ul class="uib-dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
                 <div class="btn-group card-pack">
-                    <li><img src="img/Card_Pack_Classic.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable /></li>
-                    <li><img src="img/Card_Pack_GVG.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable /></li>
-                    <li><img src="img/Card_Pack_TGT.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Right'" uncheckable /></li>
+                    <li><a><img src="img/Card_Pack_Classic.png" class="btn-success" ng-model="radioModel" uib-btn-radio="'Left'" /></a></li>
+                    <li><img src="img/Card_Pack_GVG.png" class="btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" /></li>
+                    <li><img src="img/Card_Pack_TGT.png" class="btn-success" ng-model="radioModel" uib-btn-radio="'Right'" /></li>
+                    <!--
+                    <li><img src="img/Card_Pack_Classic.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Left'" /></li>
+                    <li><img src="img/Card_Pack_GVG.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" /></li>
+                    <li><img src="img/Card_Pack_TGT.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Right'" /></li>
+                    -->
                 </div>
         </div>
     </div>
@@ -53,19 +58,15 @@
 
 <div ng-controller="CardCtrl" class="card-display-container">
     <div class="card-back flip"
-         ng-repeat="card in cardData.TheGrandTournament | filter:{collectible:'true'} | filter:{rarity:'Legendary'} | limitTo:5">
-        <!-- | rarity | set | filter:{rarity:'Rare'} -->
+         ng-repeat="card in cards | filter:{collectible:'true'} | limitTo:5"><!-- | filter:{rarity:'Epic'} | rarity | set | filter:{rarity:'Rare'} -->
         <div class="card" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped">
             <div class="face back"></div>
-            <img class="face front" ng-src="{{ card.imgGold }}"/>
+            <img class="face front" ng-src="{{ card.img }}"/>
         </div>
     </div>
+
+    <button <button type="button" class="btn btn-primary" id="loadbtn" ng-click="load()">Load</button><br>
 </div>
-
-<button type="button" class="btn btn-primary" ng-click="shuffleCards()" uncheckable>Shuffle</button>
-<button type="button" class="btn btn-primary flipAllCards" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped">Flip All</button>
-
-
 
 
 <!--

@@ -2,7 +2,12 @@
 
 var myApp = angular.module('myApp', [
     'ngRoute',
-    'CardCtrl', 'DropdownCtrl', 'ButtonCtrl', 'CardFactory',
+
+    'cardpackCtrl',
+    'cardCtrl',
+    'dropdownCtrl',
+    'buttonCtrl',
+
     'myAppService',
     'myAppFilter'
 ]);

@@ -2,14 +2,13 @@
 
 // Card rarity function
 
-angular.module('myAppFilter', []).filter('rarity', function() {
+angular.module('myAppFilter', []).filter('rarityFilter', function() {
 
     return rarity();
 
     function rarity() {
         var num = 0;
         var card;
-        var rareCheck = false;
         for (var i = 0; i < 5; i++) {
             num = getRandomNum(0, 10000);
 
@@ -39,9 +38,7 @@ angular.module('myAppFilter', []).filter('rarity', function() {
             }
             else (console.log("Randomizer failure."));
 
-            if (num > 7037) { rareCheck = true }
-
-            console.log(num.toFixed(0), card, rareCheck);
+            console.log(num.toFixed(0), card);
         }
     }
 
