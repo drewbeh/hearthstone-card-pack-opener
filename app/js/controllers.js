@@ -7,7 +7,7 @@ angular.module('dropdownCtrl', ['ngAnimate', 'ui.bootstrap'])
         });
     });
 
-
+/*
 angular.module('cardpackCtrl')
     .controller('CardpackCtrl', function ($scope) {
 
@@ -30,7 +30,7 @@ angular.module('cardpackCtrl')
         });
     });
 });
-
+*/
 
 angular.module('cardCtrl', [])
     .controller('CardCtrl', ['$scope', '$http',

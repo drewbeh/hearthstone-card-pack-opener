@@ -3,7 +3,7 @@
 var myApp = angular.module('myApp', [
     'ngRoute',
 
-    'cardpackCtrl',
+    //'cardpackCtrl',
     'cardCtrl',
     'dropdownCtrl',
     'buttonCtrl',
