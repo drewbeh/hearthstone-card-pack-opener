@@ -4,18 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My AngularJS App</title>
+    <title>Hearthstone Card Pack Simulator</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+    <script src="//rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
     <link rel="stylesheet" href="css/app.css">
-    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+
 <body>
 <div ng-view></div>
 
@@ -43,9 +46,12 @@
         <div ng-controller="ButtonCtrl">
             <ul class="uib-dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
                 <div class="btn-group card-pack">
-                    <li><a><img src="img/Card_Pack_Classic.png" class="btn-success" ng-model="radioModel" uib-btn-radio="'Left'" /></a></li>
-                    <li><img src="img/Card_Pack_GVG.png" class="btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" /></li>
-                    <li><img src="img/Card_Pack_TGT.png" class="btn-success" ng-model="radioModel" uib-btn-radio="'Right'" /></li>
+                    <li><a><img src="img/Card_Pack_Classic.png" class="btn-success" ng-model="radioModel"
+                                uib-btn-radio="'Left'"/></a></li>
+                    <li><img src="img/Card_Pack_GVG.png" class="btn-success" ng-model="radioModel"
+                             uib-btn-radio="'Middle'"/></li>
+                    <li><img src="img/Card_Pack_TGT.png" class="btn-success" ng-model="radioModel"
+                             uib-btn-radio="'Right'"/></li>
                     <!--
                     <li><img src="img/Card_Pack_Classic.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Left'" /></li>
                     <li><img src="img/Card_Pack_GVG.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" /></li>
@@ -56,18 +62,73 @@
     </div>
 </div>
 
+
+<!-- | filter:{rarity:'Epic'} | rarity | set | filter:{rarity:'Rare'} -->
 <div ng-controller="CardCtrl" class="card-display-container">
-    <div class="card-back flip"
-         ng-repeat="card in cards | filter:{collectible:'true'} | limitTo:5"><!-- | filter:{rarity:'Epic'} | rarity | set | filter:{rarity:'Rare'} -->
-        <div class="card" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped">
+    <div class="card-back flip" ng-repeat="card in cards | filter:{collectible:'true'} | limitTo:5">
+        <div class="card" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped" >
             <div class="face back"></div>
             <img class="face front" ng-src="{{ card.img }}"/>
         </div>
     </div>
 
-    <button <button type="button" class="btn btn-primary" id="loadbtn" ng-click="load()">Load</button><br>
+    <button type="button" class="btn btn-primary" id="loadbtn" ng-click="load()">Load</button>
+    <br>
 </div>
 
+
+<div ng-controller="SliderCtrl" ng-cloak="" class="sliderdemoBasicUsage">
+    <md-content style="margin: 16px; padding:16px">
+        <h2>Rarity slider</h2>
+
+        <div layout="">
+            <div flex="10" layout="" layout-align="center center">
+                <span class="md-body-1">Common</span>
+            </div>
+            <md-slider flex="" min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider" class="">
+            </md-slider>
+            <div flex="20" layout="" layout-align="center center">
+                <input flex="" type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+            </div>
+        </div>
+
+        <div layout="">
+            <div flex="10" layout="" layout-align="center center">
+                <span class="md-body-1">Rare</span>
+            </div>
+            <md-slider flex="" ng-model="color.green" min="0" max="255" aria-label="green" id="green-slider"
+                       class="md-accent">
+            </md-slider>
+            <div flex="20" layout="" layout-align="center center">
+                <input flex="" type="number" ng-model="color.green" aria-label="green" aria-controls="green-slider">
+            </div>
+        </div>
+
+        <div layout="">
+            <div flex="10" layout="" layout-align="center center">
+                <span class="md-body-1">Epic</span>
+            </div>
+            <md-slider flex="" ng-model="color.blue" min="0" max="255" aria-label="blue" id="blue-slider"
+                       class="md-primary">
+            </md-slider>
+            <div flex="20" layout="" layout-align="center center">
+                <input flex="" type="number" ng-model="color.blue" aria-label="blue" aria-controls="blue-slider">
+            </div>
+        </div>
+
+        <div layout="">
+            <div flex="10" layout="" layout-align="center center">
+                <span class="md-body-1">Legendary</span>
+            </div>
+            <md-slider flex="" ng-model="color.blue" min="0" max="255" aria-label="blue" id="orange-slider"
+                       class="md-primary">
+            </md-slider>
+            <div flex="20" layout="" layout-align="center center">
+                <input flex="" type="number" ng-model="color.orange" aria-label="orange" aria-controls="orange-slider">
+            </div>
+        </div>
+    </md-content>
+</div>
 
 <!--
 <div class="card-display-container">
@@ -91,7 +152,9 @@
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>
+<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.8.3.min.js"></script>
 </body>
+
 </html>
 
 <!--

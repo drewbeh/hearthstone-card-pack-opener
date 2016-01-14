@@ -7,30 +7,31 @@ angular.module('dropdownCtrl', ['ngAnimate', 'ui.bootstrap'])
         });
     });
 
+// Card Pack Controller
 /*
-angular.module('cardpackCtrl')
-    .controller('CardpackCtrl', function ($scope) {
+ angular.module('cardpackCtrl')
+ .controller('CardpackCtrl', function ($scope) {
 
-    $scope.radioModel = 'Left';
+ $scope.radioModel = 'Left';
 
-    $scope.checkModel = {
-        left: true,
-        middle: false,
-        right: false
-    };
+ $scope.checkModel = {
+ left: true,
+ middle: false,
+ right: false
+ };
 
-    $scope.checkResults = [];
+ $scope.checkResults = [];
 
-    $scope.$watchCollection('checkModel', function () {
-        $scope.checkResults = [];
-        angular.forEach($scope.checkModel, function (value, key) {
-            if (value) {
-                $scope.checkResults.push(key);
-            }
-        });
-    });
-});
-*/
+ $scope.$watchCollection('checkModel', function () {
+ $scope.checkResults = [];
+ angular.forEach($scope.checkModel, function (value, key) {
+ if (value) {
+ $scope.checkResults.push(key);
+ }
+ });
+ });
+ });
+ */
 
 angular.module('cardCtrl', [])
     .controller('CardCtrl', ['$scope', '$http',
@@ -49,7 +50,6 @@ angular.module('cardCtrl', [])
 
                     $scope.cards = [];
                     $scope.packType = "TheGrandTournament";
-
 
 
                     for (var i = 0; i < $scope.data[$scope.packType].length; i++) {
@@ -77,7 +77,6 @@ angular.module('cardCtrl', [])
         }
     ]);
 
-
 angular.module('buttonCtrl', [])
     .controller('ButtonCtrl', function ($scope) {
         $scope.radioModel = 'Left';
@@ -98,5 +97,70 @@ angular.module('buttonCtrl', [])
                 }
             });
         });
+    });
+
+angular.module('sliderCtrl',['ngMaterial', 'ngMessages'])
+    .controller('SliderCtrl', function($scope) {
+
+        $scope.color = {
+            red: Math.floor(Math.random() * 255),
+            green: Math.floor(Math.random() * 255),
+            blue: Math.floor(Math.random() * 255)
+        };
+
+    });
+
+angular.module('rarityFactory', [])
+    .factory('RarityFactory', function() {
+
+        return rarity();
+
+        function rarity() {
+            var num = 0;
+            var card;
+            var common = 7036;
+            var rare = 9196;
+            var epic = 9604;
+            var legendary = 9752;
+            var goldenCommon = 9879;
+            var goldenRare = 9973;
+            var goldenEpic = 9992;
+            var goldenLegendary = 10000;
+            for (var i = 0; i < 5; i++) {
+                num = getRandomNum(0, 10000);
+
+                if (num > 1 && num < common) {
+                    card = "Common";
+                }
+                else if (num > common && num < rare) {
+                    card = "Rare";
+                }
+                else if (num > rare && num < epic) {
+                    card = "Epic";
+                }
+                else if (num > epic && num < legendary) {
+                    card = "Legendary";
+                }
+                else if (num > legendary && num < goldenCommon) {
+                    card = "Golden Common";
+                }
+                else if (num > goldenCommon && num < goldenRare) {
+                    card = "Golden Rare";
+                }
+                else if (num > goldenRare && num < goldenEpic) {
+                    card = "Golden Epic";
+                }
+                else if (num > goldenEpic && num < goldenLegendary) {
+                    card = "Golden Legendary";
+                }
+                else (card = "Common");
+
+                console.log(num.toFixed(0), card);
+            }
+        }
+
+        function getRandomNum(min, max) {
+            return Math.random() * (max - min) + min;
+        }
     });
 

@@ -7,6 +7,7 @@ var myApp = angular.module('myApp', [
     'cardCtrl',
     'dropdownCtrl',
     'buttonCtrl',
+    'sliderCtrl',
 
     'myAppService',
     'myAppFilter'

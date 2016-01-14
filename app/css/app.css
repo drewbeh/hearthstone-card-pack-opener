@@ -11,6 +11,13 @@ body {
     cursor: pointer;
 }
 
+:focus {
+    outline: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 /*******************************
             CARDBACK
 *******************************/
@@ -79,7 +86,6 @@ body {
 .card-display-container .card-back {
     width: 307px;
     height: 465px;
-/ / background : url("http://wow.zamimg.com/images/hearthstone/backs/original/Card_Back_Pandaria.png");
     position: relative;
     cursor: pointer;
 }
@@ -112,13 +118,15 @@ body {
     z-index: 1;
     cursor: pointer;
     background: url("http://wow.zamimg.com/images/hearthstone/backs/original/Card_Back_Pandaria.png");
+    border: none;
     outline: none;
-    border: 0;
 }
 
 .flip .card .front {
     -webkit-transform: rotateY(180deg);
     cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 /*******************************
@@ -215,6 +223,11 @@ body {
 }
 
 
+/*******************************
+            SLIDERS
+*******************************/
 
-
+.sliderdemoBasicUsage input[type="number"] {
+    text-align: center;
+    padding-left: 10px; }
 
