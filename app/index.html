@@ -7,13 +7,15 @@
     <title>Hearthstone Card Pack Simulator</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="//cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
-    <script src="//rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
     <link rel="stylesheet" href="css/app.css">
@@ -76,57 +78,53 @@
     <br>
 </div>
 
-
-<div ng-controller="SliderCtrl" ng-cloak="" class="sliderdemoBasicUsage">
+<div ng-controller="SliderCtrl" class="sliderdemoBasicUsage">
     <md-content style="margin: 16px; padding:16px">
-        <h2>Rarity slider</h2>
+        <h3>
+            Rarity
+        </h3>
 
-        <div layout="">
+        <h4>
+            Common: {{ rarity.c }} %<br>
+            Rare: {{ rarity.r  }} %<br>
+            Epic: {{ rarity.e }} %<br>
+            Legendary: {{ rarity.l }} %<br>
+        </h4>
+
             <div flex="10" layout="" layout-align="center center">
                 <span class="md-body-1">Common</span>
             </div>
-            <md-slider flex="" min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider" class="">
-            </md-slider>
+            <md-slider flex="" min="0.0" max="100.00" ng-model="rarity.c" id="common-slider" class=""></md-slider>
             <div flex="20" layout="" layout-align="center center">
-                <input flex="" type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+                <input flex="" type="number" ng-model="rarity.c" aria-label="green" aria-controls="green-slider">
             </div>
-        </div>
 
-        <div layout="">
             <div flex="10" layout="" layout-align="center center">
                 <span class="md-body-1">Rare</span>
             </div>
-            <md-slider flex="" ng-model="color.green" min="0" max="255" aria-label="green" id="green-slider"
-                       class="md-accent">
-            </md-slider>
+            <md-slider flex="" min="0" max="100" ng-model="rarity.r" id="rare-slider" class=""></md-slider>
             <div flex="20" layout="" layout-align="center center">
-                <input flex="" type="number" ng-model="color.green" aria-label="green" aria-controls="green-slider">
+                <input flex="" type="number" ng-model="rarity.r" aria-label="blue" aria-controls="blue-slider">
             </div>
-        </div>
 
-        <div layout="">
             <div flex="10" layout="" layout-align="center center">
                 <span class="md-body-1">Epic</span>
             </div>
-            <md-slider flex="" ng-model="color.blue" min="0" max="255" aria-label="blue" id="blue-slider"
-                       class="md-primary">
-            </md-slider>
+            <md-slider flex="" min="0" max="100" ng-model="rarity.e" id="epic-slider" class=""></md-slider>
             <div flex="20" layout="" layout-align="center center">
-                <input flex="" type="number" ng-model="color.blue" aria-label="blue" aria-controls="blue-slider">
+                <input flex="" type="number" ng-model="rarity.e" aria-label="purple" aria-controls="purple-slider">
             </div>
-        </div>
 
-        <div layout="">
             <div flex="10" layout="" layout-align="center center">
                 <span class="md-body-1">Legendary</span>
             </div>
-            <md-slider flex="" ng-model="color.blue" min="0" max="255" aria-label="blue" id="orange-slider"
-                       class="md-primary">
-            </md-slider>
+            <md-slider flex="" min="0" max="100" ng-model="rarity.l" id="legendary-slider" class=""></md-slider>
             <div flex="20" layout="" layout-align="center center">
-                <input flex="" type="number" ng-model="color.orange" aria-label="orange" aria-controls="orange-slider">
+                <input flex="" type="number" ng-model="rarity.l" aria-label="orange" aria-controls="orange-slider">
             </div>
-        </div>
+
+        <button ng-click="reset()">Reset</button>
+
     </md-content>
 </div>
 

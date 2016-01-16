@@ -99,19 +99,14 @@ angular.module('buttonCtrl', [])
         });
     });
 
-angular.module('sliderCtrl',['ngMaterial', 'ngMessages'])
-    .controller('SliderCtrl', function($scope) {
+angular.module('sliderCtrl', ['ngMaterial', 'ngMessages'])
+    .controller('SliderCtrl', function ($scope) {
 
-        $scope.color = {
-            red: Math.floor(Math.random() * 255),
-            green: Math.floor(Math.random() * 255),
-            blue: Math.floor(Math.random() * 255)
-        };
 
     });
 
 angular.module('rarityFactory', [])
-    .factory('RarityFactory', function() {
+    .factory('RarityFactory', function () {
 
         return rarity();
 
@@ -163,4 +158,5 @@ angular.module('rarityFactory', [])
             return Math.random() * (max - min) + min;
         }
     });
+
 
