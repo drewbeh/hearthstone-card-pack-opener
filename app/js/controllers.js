@@ -74,6 +74,9 @@ angular.module('cardCtrl', [])
                     console.log("Error reading", $scope.url, ".");
                 });
             };
+
+
+            $scope.load();
         }
     ]);
 

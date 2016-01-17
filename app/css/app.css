@@ -1,11 +1,21 @@
+/*
+Pandaria
+red: 181 37 15
+gray: 196 190 169
+gold1: 239 204 96
+gold2: 155 112 32
+
+*/
+
 /*******************************
             GLOBALS
 *******************************/
 body {
-    margin: 0;
-    width: 100%;
-    height: 1000px;
-    padding: 20px;
+    margin:0;
+    height:100vh;
+    width:100vw;
+    padding: 50px;
+    background-color: #272724;
 }
 
 .pointer {
@@ -29,7 +39,10 @@ section {
     padding-right: 1px !important;
 }
 section > div {
-    background-color: #003972;
+    background-color: #edeeee;
+    -webkit-box-shadow: 0 3px 20px 1px rgba(100, 24, 16, 0.89);
+    -moz-box-shadow: 0 3px 20px 1px rgba(227,219,163,0.14);
+    box-shadow: 0 3px 20px 1px rgba(227,219,163,0.14);
     margin: 0 !important;
 }
 
@@ -44,11 +57,10 @@ section > div {
     border-bottom: 1px solid black;
 }
 .block3 {
-    height: 600px;
+    height: 65vh;
     border-right: 1px solid white;
 }
 .block4 {
-    height: 600px;
     width: 200px;
 }
 
@@ -106,9 +118,12 @@ section > div {
     white-space: nowrap;
     text-align: center;
     display: flex;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.card-display-container .card {
+.card {
     vertical-align: middle;
     padding: 0 3px;
     margin: 0;
@@ -118,8 +133,12 @@ section > div {
     max-width: 100%;
 }
 
-.card-display-container .card-back {
+.card-back {
     cursor: pointer;
+    vertical-align: middle;
+    padding: 0 3px;
+    margin: 0;
+    max-width: 100%;
 }
 
 .flip {
@@ -204,8 +223,29 @@ section > div {
     display: flex;
 }
 
+.btn {
+    padding: 10px 20px;
+}
+
 .btn-group {
     display: flex;
+    vertical-align: middle;
+    padding-right: 2px;
+}
+
+.btn-primary {
+    background-color: rgb(181, 37, 15);
+    border: 1px solid #edeeee;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+    background-color: rgb(181, 37, 15);
+    border: 1px solid rgb(239, 204, 96);
+    color: rgb(239, 204, 96);
 }
 
 #loadbtn {
@@ -233,7 +273,7 @@ section > div {
 }
 
 .card-back-container {
-    width: 60%;
+    width: 85%;
 }
 
 .card-back-img {
