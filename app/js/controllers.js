@@ -102,6 +102,13 @@ angular.module('buttonCtrl', [])
 angular.module('sliderCtrl', ['ngMaterial', 'ngMessages'])
     .controller('SliderCtrl', function ($scope) {
 
+        var resetRarity = function(){
+
+        };
+
+        var saveRarity = function(){
+
+        };
 
     });
 

@@ -2,131 +2,160 @@
 <html lang="en" ng-app="myApp">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hearthstone Card Pack Simulator</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-    <script src="//cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
-    <link rel="stylesheet" href="css/app.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hearthstone Card Pack Simulator</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+  <script src="//cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.1-master-a687bfc/angular-material.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 
-<body>
+<body ng-cloak layout-fill>
 <div ng-view></div>
 
-<div class="header">
-    <div ng-controller="DropdownCtrl" class="btn-group" uib-dropdown dropdown-append-to-body>
-        <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+<div layout="column" flex>
+
+  <section layout="row" flex layout-padding layout-margin>
+    <div class="block1" flex="100">
+      <div class="header">
+        <div ng-controller="DropdownCtrl" class="btn-group" uib-dropdown dropdown-append-to-body>
+          <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
             Card back <span class="caret"></span>
-        </button>
-        <ul class="uib-dropdown-menu card-back-container" role="menu" aria-labelledby="btn-append-to-body">
+          </button>
+          <ul class="uib-dropdown-menu card-back-container" role="menu" aria-labelledby="btn-append-to-body">
             <li class="card-back-list" ng-repeat="cardback in cardbackData">
-                <a href="#"><img class="card-back-img" ng-src="{{ cardback.img }}"/></a>
+              <a href="#"><img class="card-back-img" ng-src="{{ cardback.img }}"/></a>
                 <span class="caption">
                     {{ cardback.cardBackId }}
                     {{ cardback.name }}
                 </span>
             </li>
-        </ul>
-    </div>
-
-    <div ng-controller="DropdownCtrl" class="btn-group" uib-dropdown dropdown-append-to-body>
-        <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
-            Card pack <span class="caret"></span>
-        </button>
-
-        <div ng-controller="ButtonCtrl">
-            <ul class="uib-dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
-                <div class="btn-group card-pack">
-                    <li><a><img src="img/Card_Pack_Classic.png" class="btn-success" ng-model="radioModel"
-                                uib-btn-radio="'Left'"/></a></li>
-                    <li><img src="img/Card_Pack_GVG.png" class="btn-success" ng-model="radioModel"
-                             uib-btn-radio="'Middle'"/></li>
-                    <li><img src="img/Card_Pack_TGT.png" class="btn-success" ng-model="radioModel"
-                             uib-btn-radio="'Right'"/></li>
-                    <!--
-                    <li><img src="img/Card_Pack_Classic.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Left'" /></li>
-                    <li><img src="img/Card_Pack_GVG.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" /></li>
-                    <li><img src="img/Card_Pack_TGT.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Right'" /></li>
-                    -->
-                </div>
+          </ul>
         </div>
+
+        <div ng-controller="DropdownCtrl" class="btn-group" uib-dropdown dropdown-append-to-body>
+          <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+            Card pack <span class="caret"></span>
+          </button>
+
+          <div ng-controller="ButtonCtrl">
+            <ul class="uib-dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
+              <div class="btn-group card-pack">
+                <li><a><img src="img/Card_Pack_Classic.png" class="btn-success" ng-model="radioModel"
+                            uib-btn-radio="'Left'"/></a></li>
+                <li><img src="img/Card_Pack_GVG.png" class="btn-success" ng-model="radioModel"
+                         uib-btn-radio="'Middle'"/></li>
+                <li><img src="img/Card_Pack_TGT.png" class="btn-success" ng-model="radioModel"
+                         uib-btn-radio="'Right'"/></li>
+                <!--
+                <li><img src="img/Card_Pack_Classic.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Left'" /></li>
+                <li><img src="img/Card_Pack_GVG.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Middle'" /></li>
+                <li><img src="img/Card_Pack_TGT.png" class="btn btn-success" ng-model="radioModel" uib-btn-radio="'Right'" /></li>
+                -->
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <div ng-controller="DropdownCtrl" class="btn-group" uib-dropdown dropdown-append-to-body>
+          <button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>
+            Rarity Sliders <span class="caret"></span>
+          </button>
+
+          <div ng-controller="ButtonCtrl">
+            <ul class="uib-dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
+              <div class="btn-group">
+                <div ng-controller="SliderCtrl" class="sliderdemoBasicUsage">
+                  <md-content style="margin: 16px; padding:16px">
+                    <h3>Rarity</h3>
+
+                    <h4>
+                      Common: {{ rarity.c }} %<br>
+                      Rare: {{ rarity.r }} %<br>
+                      Epic: {{ rarity.e }} %<br>
+                      Legendary: {{ rarity.l }} %<br>
+                    </h4>
+
+                    <div flex="10" layout="" layout-align="center center">
+                      <span class="md-body-1">Common</span>
+                    </div>
+                    <md-slider flex="" min="0.0" max="100.00" ng-model="rarity.c" aria-label="black" id="common-slider" class=""></md-slider>
+                    <div flex="20" layout="" layout-align="center center">
+                      <input flex="" type="number" ng-model="rarity.c" aria-label="black" aria-controls="black-slider">
+                    </div>
+
+                    <div flex="10" layout="" layout-align="center center">
+                      <span class="md-body-1">Rare</span>
+                    </div>
+                    <md-slider flex="" min="0" max="100" ng-model="rarity.r" aria-label="blue" id="rare-slider" class=""></md-slider>
+                    <div flex="20" layout="" layout-align="center center">
+                      <input flex="" type="number" ng-model="rarity.r" aria-label="blue" aria-controls="blue-slider">
+                    </div>
+
+                    <div flex="10" layout="" layout-align="center center">
+                      <span class="md-body-1">Epic</span>
+                    </div>
+                    <md-slider flex="" min="0" max="100" ng-model="rarity.e" aria-label="purple" id="epic-slider" class=""></md-slider>
+                    <div flex="20" layout="" layout-align="center center">
+                      <input flex="" type="number" ng-model="rarity.e" aria-label="purple" aria-controls="purple-slider">
+                    </div>
+
+                    <div flex="10" layout="" layout-align="center center">
+                      <span class="md-body-1">Legendary</span>
+                    </div>
+                    <md-slider flex="" min="0" max="100" ng-model="rarity.l" aria-label="orange" id="legendary-slider" class=""></md-slider>
+                    <div flex="20" layout="" layout-align="center center">
+                      <input flex="" type="number" ng-model="rarity.l" aria-label="orange" aria-controls="orange-slider">
+                    </div>
+
+                    <button id="btn-append-to-body" type="button" class="btn btn-primary" ng-click="saveRarity()">Save</button>
+                    <button id="btn-append-to-body" type="button" class="btn btn-primary" ng-click="resetRarity()">Reset to default</button>
+
+                  </md-content>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+    <div class="block2" flex="none">2</div>
+  </section>
 
-
-<!-- | filter:{rarity:'Epic'} | rarity | set | filter:{rarity:'Rare'} -->
-<div ng-controller="CardCtrl" class="card-display-container">
-    <div class="card-back flip" ng-repeat="card in cards | filter:{collectible:'true'} | limitTo:5">
-        <div class="card" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped" >
+  <section layout="row" flex layout-padding layout-margin>
+    <div class="block3" flex="100">
+      <!-- | filter:{rarity:'Epic'} | rarity | set | filter:{rarity:'Rare'} -->
+      <div ng-controller="CardCtrl" class="card-display-container">
+        <div class="card-back flip" ng-repeat="card in cards | filter:{collectible:'true'} | limitTo:5">
+          <div class="card" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped">
             <div class="face back"></div>
             <img class="face front" ng-src="{{ card.img }}"/>
+          </div>
         </div>
+
+        <br>
+        <button type="button" class="btn btn-primary" id="loadbtn" ng-click="load()">Load</button>
+      </div>
+
     </div>
+    <div class="block4" flex="none">
+      4
+    </div>
+  </section>
 
-    <button type="button" class="btn btn-primary" id="loadbtn" ng-click="load()">Load</button>
-    <br>
 </div>
 
-<div ng-controller="SliderCtrl" class="sliderdemoBasicUsage">
-    <md-content style="margin: 16px; padding:16px">
-        <h3>
-            Rarity
-        </h3>
-
-        <h4>
-            Common: {{ rarity.c }} %<br>
-            Rare: {{ rarity.r  }} %<br>
-            Epic: {{ rarity.e }} %<br>
-            Legendary: {{ rarity.l }} %<br>
-        </h4>
-
-            <div flex="10" layout="" layout-align="center center">
-                <span class="md-body-1">Common</span>
-            </div>
-            <md-slider flex="" min="0.0" max="100.00" ng-model="rarity.c" id="common-slider" class=""></md-slider>
-            <div flex="20" layout="" layout-align="center center">
-                <input flex="" type="number" ng-model="rarity.c" aria-label="green" aria-controls="green-slider">
-            </div>
-
-            <div flex="10" layout="" layout-align="center center">
-                <span class="md-body-1">Rare</span>
-            </div>
-            <md-slider flex="" min="0" max="100" ng-model="rarity.r" id="rare-slider" class=""></md-slider>
-            <div flex="20" layout="" layout-align="center center">
-                <input flex="" type="number" ng-model="rarity.r" aria-label="blue" aria-controls="blue-slider">
-            </div>
-
-            <div flex="10" layout="" layout-align="center center">
-                <span class="md-body-1">Epic</span>
-            </div>
-            <md-slider flex="" min="0" max="100" ng-model="rarity.e" id="epic-slider" class=""></md-slider>
-            <div flex="20" layout="" layout-align="center center">
-                <input flex="" type="number" ng-model="rarity.e" aria-label="purple" aria-controls="purple-slider">
-            </div>
-
-            <div flex="10" layout="" layout-align="center center">
-                <span class="md-body-1">Legendary</span>
-            </div>
-            <md-slider flex="" min="0" max="100" ng-model="rarity.l" id="legendary-slider" class=""></md-slider>
-            <div flex="20" layout="" layout-align="center center">
-                <input flex="" type="number" ng-model="rarity.l" aria-label="orange" aria-controls="orange-slider">
-            </div>
-
-        <button ng-click="reset()">Reset</button>
-
-    </md-content>
-</div>
 
 <!--
 <div class="card-display-container">
